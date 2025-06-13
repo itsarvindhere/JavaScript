@@ -1,0 +1,1 @@
+🚀 This repository is a curated collection of essential JavaScript concepts, explained in a clear and practical way with real code examples. Whether you're a beginner building your foundation or a developer preparing for interviews, this guide covers everything you need to know to write better, smarter JavaScript.
