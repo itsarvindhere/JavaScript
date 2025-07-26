@@ -556,6 +556,18 @@ But here comes the twist.
 
 Even though the call stack is empty, the 'Task Queue' is not checked immediately. The 'Event Loop' will only check the 'Task Queue' after the current execution context is complete. The current execution context is the synchronous code that is currently being executed.
 
+--------------------------------------------------
+
+It is very important to understand that JavaScript has a "run-to-completion" model for its synchronous code. This means that once the engine starts executing a script, it will not be interrupted until the very last line of that script has been processed and the Call Stack is empty.
+
+So, the engine treats your entire initial script as one single, synchronous job. When it encounters 'setTimeout' or '.then()' or similar stuff, it doesn't pause. It simply hands the callback function to the browser environment to be placed in the appropriate queue (Macrotask or Microtask) later. The engine then immediately moves to the next line of your script.
+
+The Event Loop only gets its chance to check the queues after the entire script has finished and the Call Stack is confirmed to be empty.
+
+So, even if the setTimeout timer finishes instantly, its callback must wait patiently in the Macrotask Queue until the main script is completely done. ✅
+
+--------------------------------------------------
+
 So, all the synchronous code has to finish executing first before the 'Event Loop' can check the 'Task Queue'.
 
 And as we can see above, we still have a console.log('3') to execute. So, it will be pushed to the 'Call Stack' and executed immediately, logging "3". Then, it will be popped off the stack. The stack now looks like this:
