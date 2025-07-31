@@ -116,7 +116,7 @@ Instead, when we get the promise object from our function, we can actually use a
 
     const weather = getWeather();
 
-This 'weather' variable will now point to a ; object. 
+This 'weather' variable will now point to a Promise object. 
 
 So, let's say if the weather data arrives (that is, if the promise resolves), we want to console log the weather data. We can do that by using the 'then' method on the promise object.
 
@@ -219,7 +219,7 @@ Promises actually make it a lot better by allowing us to write it like this -
 
 So, Promises flatten the structure and improve readability.
 
-There is als better error handling.
+There is also better error handling.
 
 Since we can chain promises, if any one of the promises in the chain is rejected, the error will propagate down the chain and can be caught at the end of the chain.
 
@@ -403,7 +403,7 @@ This is generally used for some cleanup operation that needs to be done regardle
      
 In the above example, the 'onFinally' function will be called, despite the fact that the fun1 promise was rejected.
 
-It is worth noting that the callback passed to the 'finally' method does not receive any arguments. This makes sense because 'finally' does not case whether the promise was rejected or resolved with any value. It is simply used for cleanup or final operations that need to be executed regardless of the promise's outcome.
+It is worth noting that the callback passed to the 'finally' method does not receive any arguments. This makes sense because 'finally' does not care whether the promise was rejected or resolved with any value. It is simply used for cleanup or final operations that need to be executed regardless of the promise's outcome.
 
 Just like 'then' and 'catch', 'finally' also returns a new promise.This means, you can chain it with 'then' or 'catch' after it. If the 'onFinally' throws an error or returns a rejected promise, the new promise that 'finally' returns will be rejected with that value. Otherwise, the new promise will settle with the same state as the current promise.
 
